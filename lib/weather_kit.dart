@@ -1,9 +1,12 @@
 library weather_kit;
 
+export 'src/models/data_set.dart';
+
 import 'dart:io';
 
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:http/http.dart' as http;
+import 'package:weather_kit/src/models/data_set.dart';
 
 class WeatherKit {
   String generateJWT({
@@ -53,15 +56,20 @@ class WeatherKit {
   }
 
   /// Obtain weather data for the specified location.
-  Future<http.Response> obtainWeatherData(
-      {required String jwt,
-      required String language,
-      required String latitude,
-      required String longitude,
-      required String dataSets}) async {
+  Future<http.Response> obtainWeatherData({
+    required String jwt,
+    required String language,
+    required double latitude,
+    required double longitude,
+    required DataSet dataSets,
+    required String timezone,
+  }) async {
+    assert(latitude >= -90 || latitude <= 90);
+    assert(latitude >= -180 || latitude <= 180);
     final response = await http.get(
       Uri.parse(
-          "https://weatherkit.apple.com/api/v1/weather/$language/$latitude/$longitude?dataSets=$dataSets"),
+        "https://weatherkit.apple.com/api/v1/weather/$language/$latitude/$longitude?dataSets=${dataSets.name}&timezone=$timezone",
+      ),
       headers: {HttpHeaders.authorizationHeader: jwt},
     );
     return response;
