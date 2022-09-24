@@ -35,14 +35,18 @@ class WeatherKit {
     return token;
   }
 
-  Future<http.Response> fetchAvailability({
+  /// [country] should be the ISO Alpha-2 country code.
+  Future<http.Response> obtainAvailability({
     required String jwt,
-    required String latitude,
-    required String longitude,
+    required double latitude,
+    required double longitude,
+    required String country,
   }) async {
+    assert(latitude >= -90 || latitude <= 90);
+    assert(latitude >= -180 || latitude <= 180);
     final response = await http.get(
       Uri.parse(
-          "https://weatherkit.apple.com/api/v1/availability/$latitude/$longitude"),
+          "https://weatherkit.apple.com/api/v1/availability/$latitude/$longitude?country=$country"),
       headers: {HttpHeaders.authorizationHeader: jwt},
     );
     return response;
