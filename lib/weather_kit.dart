@@ -6,6 +6,7 @@ import 'dart:io';
 
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:http/http.dart' as http;
+import 'package:weather_kit/src/constants/base_url.dart';
 import 'package:weather_kit/src/models/data_set.dart';
 
 class WeatherKit {
@@ -48,8 +49,7 @@ class WeatherKit {
     assert(latitude >= -90 || latitude <= 90);
     assert(latitude >= -180 || latitude <= 180);
     final response = await http.get(
-      Uri.parse(
-          "https://weatherkit.apple.com/api/v1/availability/$latitude/$longitude?country=$country"),
+      Uri.parse("$baseUrl/availability/$latitude/$longitude?country=$country"),
       headers: {HttpHeaders.authorizationHeader: jwt},
     );
     return response;
@@ -68,7 +68,7 @@ class WeatherKit {
     assert(latitude >= -180 || latitude <= 180);
     final response = await http.get(
       Uri.parse(
-        "https://weatherkit.apple.com/api/v1/weather/$language/$latitude/$longitude?dataSets=${dataSets.name}&timezone=$timezone",
+        "$baseUrl/weather/$language/$latitude/$longitude?dataSets=${dataSets.name}&timezone=$timezone",
       ),
       headers: {HttpHeaders.authorizationHeader: jwt},
     );

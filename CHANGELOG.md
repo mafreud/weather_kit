@@ -1,3 +1,7 @@
+## 0.0.5
+
+- add supporting platforms
+
 ## 0.0.4
 
 - ADD: data_set enum

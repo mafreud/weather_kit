@@ -1,6 +1,6 @@
 name: weather_kit
 description: A dart library for interfacing with the Apple WeatherKit API.
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/mafreud/weather_kit
 repository: https://github.com/mafreud/weather_kit
 
@@ -9,12 +9,19 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  dart_jsonwebtoken: ^2.4.2
   flutter:
     sdk: flutter
-  dart_jsonwebtoken: ^2.4.2
   http: ^0.13.5
 
 dev_dependencies:
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  windows:
