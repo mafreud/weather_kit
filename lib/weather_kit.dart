@@ -52,6 +52,7 @@ class WeatherKit {
     return response;
   }
 
+  /// Obtain weather data for the specified location.
   Future<http.Response> obtainWeatherData(
       {required String jwt,
       required String language,
