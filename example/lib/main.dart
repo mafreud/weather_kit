@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_kit/weather_kit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,9 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
-            onPressed: () async {
-              //
-            },
+            onPressed: () async {},
             child: const Text('Generate JWT'),
           )
         ],
