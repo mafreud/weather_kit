@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  dart_jsonwebtoken: ^2.4.2
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
