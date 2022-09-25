@@ -42,17 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () async {
               const pem = """
 -----BEGIN PRIVATE KEY-----
-MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgMlH7CIWjO34ILM3i
-IShw3taCjnFOFNFrVrzGVozIFC2gCgYIKoZIzj0DAQehRANCAATgbIOFNKQmCfoq
-Z7TBS4x6R7tTajT8DMsE3lq0XLlHCm6WYPVK2eMMWAyZd4xrWkK7PQhlK1hxCypA
-lp6zNroo
+test
 -----END PRIVATE KEY-----
 """;
               final weatherKit = WeatherKit();
               final jwt = weatherKit.generateJWT(
-                bundleId: 'com.ai.hokusai',
-                teamId: 'T4W85DPBVX',
-                keyId: 'RFC9H5A57J',
+                bundleId: 'com.sample.id',
+                teamId: 'sample team id',
+                keyId: 'sample key',
                 pem: pem,
                 expiresIn: const Duration(hours: 1),
               );
