@@ -36,5 +36,4 @@ final result = await weatherKit.obtainWeatherData(
 ## References
 
 https://zenn.dev/bon/articles/weatherkit-restapi
-
 https://allthecode.co/blog/post/setting-up-weatherkit-rest-api-in-node-js

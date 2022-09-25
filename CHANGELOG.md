@@ -1,3 +1,7 @@
+## 0.0.6
+
+- add optional query parameters
+
 ## 0.0.5
 
 - add supporting platforms
