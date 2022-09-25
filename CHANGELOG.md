@@ -1,3 +1,7 @@
+## 0.1.0
+
+- update readme
+
 ## 0.0.6
 
 - add optional query parameters
