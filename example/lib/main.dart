@@ -39,7 +39,38 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
-            onPressed: () async {},
+            onPressed: () async {
+              const pem = """
+-----BEGIN PRIVATE KEY-----
+MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgMlH7CIWjO34ILM3i
+IShw3taCjnFOFNFrVrzGVozIFC2gCgYIKoZIzj0DAQehRANCAATgbIOFNKQmCfoq
+Z7TBS4x6R7tTajT8DMsE3lq0XLlHCm6WYPVK2eMMWAyZd4xrWkK7PQhlK1hxCypA
+lp6zNroo
+-----END PRIVATE KEY-----
+""";
+              final weatherKit = WeatherKit();
+              final jwt = weatherKit.generateJWT(
+                bundleId: 'com.ai.hokusai',
+                teamId: 'T4W85DPBVX',
+                keyId: 'RFC9H5A57J',
+                pem: pem,
+                expiresIn: const Duration(hours: 1),
+              );
+              final now = DateTime.now();
+              final res = await weatherKit.obtainWeatherData(
+                jwt: jwt,
+                language: 'ja',
+                latitude: 35.91238777,
+                longitude: 139.60285321,
+                dataSets: DataSet.currentWeather,
+                timezone: 'Asia/Tokyo',
+                countryCode: 'JP',
+                currentAsOf: now.add(
+                  const Duration(days: -1),
+                ),
+              );
+              print(res.body);
+            },
             child: const Text('Generate JWT'),
           )
         ],
