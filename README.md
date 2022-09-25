@@ -1,8 +1,29 @@
 # Weather Kit
 
-## Usage
+## Prerequisite
 
-To use this plugin, add `weather_kit` as a [dependency in your pubspec.yaml file](https://flutter.dev/docs/development/platform-integration/platform-channels).
+### Apple Developer Program
+
+You must be a member of the Apple Developer Program to use this package.
+
+### Bundle ID
+
+You can register and check bundle id from Xcode or [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/certificates/list).
+
+### Team ID
+
+You can check Team ID from [Membership](https://developer.apple.com/account/#!/membership).
+
+### keyID and p8 certificate for Weather Kit
+
+In order to use the Weather Kit, 
+
+1. Access to [Certificates, Identifiers & Profiles / Keys](https://developer.apple.com/account/resources/authkeys/list)
+2. Enter any Key Name in the form and check the Weather Kit checkbox.
+3. Tap "register" and you can check Key Id
+4. Tap "Download" to get p8 certificate.
+
+<img src="https://user-images.githubusercontent.com/28733986/192140345-58481fb2-eae4-46db-bc03-7c3a97629fbf.gif" width="600"  />
 
 ### Examples
 
@@ -35,5 +56,7 @@ final result = await weatherKit.obtainWeatherData(
 
 ## References
 
-https://zenn.dev/bon/articles/weatherkit-restapi
-https://allthecode.co/blog/post/setting-up-weatherkit-rest-api-in-node-js
+- https://developer.apple.com/weatherkit/
+- https://developer.apple.com/videos/play/wwdc2022/10003/
+- https://zenn.dev/bon/articles/weatherkit-restapi
+- https://allthecode.co/blog/post/setting-up-weatherkit-rest-api-in-node-js
