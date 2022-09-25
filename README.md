@@ -53,6 +53,8 @@ final result = await weatherKit.obtainWeatherData(
   dataSets: 'currentWeather',
 );
 ```
+## Pricing
+First 500,000 calls are free. For more details, check [this](https://developer.apple.com/weatherkit/get-started/).
 
 ## References
 
