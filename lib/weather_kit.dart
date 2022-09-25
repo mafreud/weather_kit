@@ -63,13 +63,40 @@ class WeatherKit {
     required double longitude,
     required DataSet dataSets,
     required String timezone,
+    String? countryCode,
+    DateTime? currentAsOf,
+    DateTime? dailyEnd,
+    DateTime? dailyStart,
+    DateTime? hourlyEnd,
+    DateTime? hourlyStart,
   }) async {
     assert(latitude >= -90 || latitude <= 90);
     assert(latitude >= -180 || latitude <= 180);
+    String url =
+        "$baseUrl/weather/$language/$latitude/$longitude?dataSets=${dataSets.name}&timezone=$timezone";
+
+    if (countryCode != null) {
+      url = '$url&countryCode=$countryCode';
+    }
+    if (currentAsOf != null) {
+      url = '$url&currentAsOf=${currentAsOf.toIso8601String()}Z';
+    }
+    if (dailyEnd != null) {
+      url = '$url&dailyEnd=${dailyEnd.toIso8601String()}Z';
+    }
+    if (dailyStart != null) {
+      url = '$url&dailyStart=${dailyStart.toIso8601String()}Z';
+    }
+    if (hourlyEnd != null) {
+      url = '$url&hourlyEnd=${hourlyEnd.toIso8601String()}Z';
+    }
+    if (hourlyStart != null) {
+      url = '$url&hourlyStart=${hourlyStart.toIso8601String()}Z';
+    }
+
+    print(url);
     final response = await http.get(
-      Uri.parse(
-        "$baseUrl/weather/$language/$latitude/$longitude?dataSets=${dataSets.name}&timezone=$timezone",
-      ),
+      Uri.parse(url),
       headers: {HttpHeaders.authorizationHeader: jwt},
     );
     return response;
