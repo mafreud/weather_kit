@@ -2,11 +2,13 @@ library weather_kit;
 
 export 'src/models/data_set.dart';
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_kit/src/constants/base_url.dart';
+import 'package:weather_kit/src/models/current_weather_data.dart';
 import 'package:weather_kit/src/models/data_set.dart';
 
 class WeatherKit {
@@ -40,7 +42,7 @@ class WeatherKit {
   }
 
   /// [country] should be the ISO Alpha-2 country code.
-  Future<http.Response> obtainAvailability({
+  Future<List<dynamic>> obtainAvailability({
     required String jwt,
     required double latitude,
     required double longitude,
@@ -52,11 +54,13 @@ class WeatherKit {
       Uri.parse("$baseUrl/availability/$latitude/$longitude?country=$country"),
       headers: {HttpHeaders.authorizationHeader: jwt},
     );
-    return response;
+    final decode = json.decode(response.body);
+
+    return decode;
   }
 
   /// Obtain weather data for the specified location.
-  Future<http.Response> obtainWeatherData({
+  Future<CurrentWeatherData> obtainWeatherData({
     required String jwt,
     required String language,
     required double latitude,
@@ -94,11 +98,10 @@ class WeatherKit {
       url = '$url&hourlyStart=${hourlyStart.toIso8601String()}Z';
     }
 
-    print(url);
     final response = await http.get(
       Uri.parse(url),
       headers: {HttpHeaders.authorizationHeader: jwt},
     );
-    return response;
+    return CurrentWeatherData.fromJson(response.body);
   }
 }
