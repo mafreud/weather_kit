@@ -1,3 +1,7 @@
+## 0.2.0
+
+- refactor
+
 ## 0.1.1
 
 - add pricing section to README
