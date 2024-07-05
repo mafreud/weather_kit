@@ -1,5 +1,4 @@
 {
-    "cSpell.words": [
-        "jsonwebtoken"
-    ]
+  "cSpell.words": ["jsonwebtoken"],
+  "cmake.configureOnOpen": false
 }
